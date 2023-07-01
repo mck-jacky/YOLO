@@ -30,6 +30,10 @@ const StyledRating = styled(Rating)({
   },
 });
 
+const CustomStyledRating = styled(StyledRating)({
+  fontSize: '48px', // Adjust the font size as per your requirement
+});
+
 const SurveryPage = () => {
   const [age, setAge] = React.useState('');
   const [step, setStep] = React.useState(1);
@@ -40,54 +44,74 @@ const SurveryPage = () => {
 
   const handleNextButton = (event) => {
     setStep(step+1)
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   }
   const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
-
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
 
   const handleReset = () => {
     setActiveStep(0);
   };
 
+  const [food, setFood] = React.useState(true);
+  const [scenery, setScenery] = React.useState(true);
+  const [shopping, setShopping] = React.useState(true);
+  const [random, setRandom] = React.useState(true);
+
+  const handleFood = () => {
+    setFood(!food)
+    setRandom(true)
+  }
+
+  const handleScenery = () => {
+    setScenery(!scenery)
+    setRandom(true)
+  }
+
+  const handleShopping = () => {
+    setShopping(!shopping)
+    setRandom(true)
+  }
+
+  const handleRandom = () => {
+    setFood(true)
+    setScenery(true)
+    setShopping(true)
+    setRandom(!random)
+  }
+
   return (
     <React.Fragment>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          sx={{
+            width: 600,
+            marginTop: 3
+          }}
+        >
+            <Stepper activeStep={activeStep}>
+              {steps.map((label, index) => {
+                const stepProps = {};
+                const labelProps = {};
+                return (
+                  <Step key={label} {...stepProps}>
+                    <StepLabel {...labelProps}>{label}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
+        </Box>
+      </Box>
       <Box
         sx={{
           display: 'flex',
@@ -97,65 +121,10 @@ const SurveryPage = () => {
           height: '100vh',
         }}
       >
-        <Box sx={{ width: 600 }}>
-            <Stepper activeStep={activeStep}>
-              {steps.map((label, index) => {
-                const stepProps = {};
-                const labelProps = {};
-                if (isStepOptional(index)) {
-                  labelProps.optional = (
-                    <Typography variant="caption">Optional</Typography>
-                  );
-                }
-                if (isStepSkipped(index)) {
-                  stepProps.completed = false;
-                }
-                return (
-                  <Step key={label} {...stepProps}>
-                    <StepLabel {...labelProps}>{label}</StepLabel>
-                  </Step>
-                );
-              })}
-            </Stepper>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  All steps completed - you&apos;re finished
-                </Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                  <Box sx={{ flex: '1 1 auto' }} />
-                  <Button onClick={handleReset}>Reset</Button>
-                </Box>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                  <Button
-                    color="inherit"
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    sx={{ mr: 1 }}
-                  >
-                    Back
-                  </Button>
-                  <Box sx={{ flex: '1 1 auto' }} />
-                  {isStepOptional(activeStep) && (
-                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                      Skip
-                    </Button>
-                  )}
-
-                  <Button onClick={handleNext}>
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                  </Button>
-                </Box>
-              </React.Fragment>
-            )}
-          </Box>
         <Box
           sx={{
-            width: 1000
+            width: 1000,
+            marginTop: -10
           }}
         >
 
@@ -176,17 +145,19 @@ const SurveryPage = () => {
                 }}
               >
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                  <InputLabel id="demo-simple-select-label">POIS</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={age}
-                    label="Age"
+                    label="POIS"
                     onChange={handleChange}
                   >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value={1}>1</MenuItem>
+                    <MenuItem value={2}>2</MenuItem>
+                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value={4}>4</MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -206,23 +177,38 @@ const SurveryPage = () => {
 
               <Box
                 sx={{
-                  marginBottom: 10
+                  marginBottom: 10,
+                  display: 'flex'
                 }}
               >
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    label="Age"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
+                <Button
+                  sx={{ marginRight: 3 }}
+                  variant={food ? 'outlined' : 'contained'}
+                  onClick={handleFood}
+                >
+                  Food
+                </Button>
+                <Button
+                  sx={{ marginRight: 3 }}
+                  variant={scenery ? 'outlined' : 'contained'}
+                  onClick={handleScenery}
+                >
+                  Scenery
+                </Button>
+                <Button
+                  sx={{ marginRight: 3 }}
+                  variant={shopping ? 'outlined' : 'contained'}
+                  onClick={handleShopping}
+                >
+                  Shopping
+                </Button>
+                <Button
+                  sx={{ marginRight: 3 }}
+                  variant={random ? 'outlined' : 'contained'}
+                  onClick={handleRandom}
+                >
+                  Random
+                </Button>
               </Box>
             </>
           )}
@@ -243,7 +229,7 @@ const SurveryPage = () => {
                   marginBottom: 10
                 }}
               >
-                <TextField id="standard-basic" label="Standard" variant="standard" fullWidth/>
+                <TextField id="standard-basic" label="Location" variant="standard" fullWidth/>
               </Box>
             </>
           )}
@@ -265,14 +251,13 @@ const SurveryPage = () => {
                 }}
               >
                 
-                <StyledRating
+                <CustomStyledRating
                   name="customized-color"
                   defaultValue={0}
                   getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                   precision={1}
                   icon={<EscalatorOutlinedIcon fontSize="inherit" />}
                   emptyIcon={<EscalatorIcon fontSize="inherit" />}
-                  size="48px"
                 />
               </Box>
             </>
