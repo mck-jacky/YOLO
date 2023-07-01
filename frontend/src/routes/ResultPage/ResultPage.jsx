@@ -225,7 +225,6 @@ const ResultPage = () => {
       <Box
         sx={{
           width: '60%',
-          backgroundColor: 'blue'
         }}
       >
         {step === 2 && (
