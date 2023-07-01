@@ -53,6 +53,8 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
           sx={{}}
           alt='event-image'
           src={image}
+          width="205px"
+          height="115px"
         />
         
         <Box
