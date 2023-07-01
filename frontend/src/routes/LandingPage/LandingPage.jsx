@@ -17,10 +17,12 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 const LandingPage = () => {
   const [step, setStep] = useState(1)
+  const [loggedin, setLoggedIn] = useState(false)
 
   const handleLogin = () => {
     if (step === 1) setStep(2)
     if (step === 2) setStep(1)
+    setLoggedIn(true)
   }
 
   return (
@@ -73,27 +75,32 @@ const LandingPage = () => {
             <Button variant="outlined">YOLO</Button>
           </Link>
 
-          <Box
-            sx={{
-              display: 'flex',
-              marginTop: 3
-            }}
-          >
-            <Button 
+          {loggedin === false && (
+            <Box
               sx={{
-                marginRight: 1
+                display: 'flex',
+                marginTop: 3
               }}
-              variant="outlined"
-              onClick={handleLogin}
             >
-              <ArrowOutwardIcon/>Login
-            </Button>
-            <Button 
-              variant="outlined"
-            >
-              <ArrowOutwardIcon/>Register
-            </Button>
-          </Box>
+              <Button 
+                sx={{
+                  marginRight: 1
+                }}
+                variant="outlined"
+                onClick={handleLogin}
+              >
+                <ArrowOutwardIcon/>Login
+              </Button>
+              <Button 
+                variant="outlined"
+              >
+                <ArrowOutwardIcon/>Register
+              </Button>
+            </Box>
+
+          )}
+
+          
 
           
 

@@ -4,7 +4,7 @@ import { Box, Container } from '@mui/system';
 
 const Loading = ({ onVideoEnd }) => {
   useEffect(() => {
-    const videoDuration = 2.5 * 1000; // Convert seconds to milliseconds
+    const videoDuration = 1 * 1000; // Convert seconds to milliseconds
     const timer = setTimeout(() => {
       onVideoEnd();
     }, videoDuration);
