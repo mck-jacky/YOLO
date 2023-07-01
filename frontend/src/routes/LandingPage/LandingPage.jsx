@@ -48,7 +48,7 @@ const LandingPage = () => {
               marginBottom: 4
             }}
           >
-            Having Trouble of ???
+            Getting lockdown blues?
           </Typography>
           <Typography 
             variant="h2"
@@ -69,7 +69,7 @@ const LandingPage = () => {
               marginBottom: 4
             }}
           >
-            We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.
+            Y.O.L.O. is an innovative travel solution that personalizes itineraries based on your appetite for risk. Utilizing Google Maps' global points of interest, each assigned with a risk rating (Y.O.L.O. rating), the solution caters to those that want to escape the confines of post-lockdown.
           </Typography>
 
           <Link to="/survey">

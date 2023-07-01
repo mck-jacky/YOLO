@@ -67,7 +67,7 @@ const IternaryItem = ({location, desc, yolo, type}) => {
             fontWeight: 700
           }}
         >
-          {yolo}
+          Lv.{yolo}
         </Typography>
       </Box>
     </>

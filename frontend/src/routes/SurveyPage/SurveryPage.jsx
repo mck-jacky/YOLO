@@ -128,7 +128,7 @@ const SurveryPage = () => {
     setRandom(!random)
   }
 
-  const [keywords, setKeywords] = React.useState(["hiking", "IGA", "Chicken Wrap"]);
+  const [keywords, setKeywords] = React.useState(["Sydney Opera House", "Bondi Beach", "Chinatown", "Meat Pie", "Gelato", "Avacado", "Football", "Skydive", "Swimming"]);
   const [inputValue, setInputValue] = React.useState('');
 
   const handleInputChange = (event) => {
