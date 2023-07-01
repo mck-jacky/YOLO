@@ -14,10 +14,29 @@ import { styled } from '@mui/material/styles';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import IParallax from '@react-spring/parallax'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { TextField, Button, Chip, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax'
+import './style.css';
+
+// Page component
+export const Page = ({ offset, gradient, onClick }) => (
+  <>
+   {/* onClick={onClick} */}
+    <ParallaxLayer offset={offset} speed={0.2}>
+      <div className="slopeBegin" />
+    </ParallaxLayer>
+
+    <ParallaxLayer offset={offset} speed={0.6}>
+      <div className={`slopeEnd ${gradient}`} />
+    </ParallaxLayer>
+
+    {/* <ParallaxLayer className="text number" offset={offset} speed={0.3}>
+      <span>0{offset + 1}</span>
+    </ParallaxLayer> */}
+  </>
+)
 
 const steps = ['POIS', 'Type', 'Location', 'YOLO Level', 'Keywords'];
 
@@ -51,6 +70,7 @@ const SurveryPage = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
     console.log(step)
+    scroll(step)
 
     if (step === 5) {
       navigate('/result')
@@ -62,6 +82,14 @@ const SurveryPage = () => {
   const [scenery, setScenery] = React.useState(true);
   const [shopping, setShopping] = React.useState(true);
   const [random, setRandom] = React.useState(true);
+
+  const parallaxRef = useRef(null);
+
+  const scroll = (to) => {
+    if (parallaxRef.current) {
+      parallaxRef.current.scrollTo(to)
+    }
+  }
 
   const handleFood = () => {
     setFood(!food)
@@ -114,6 +142,14 @@ const SurveryPage = () => {
 
   return (
     <React.Fragment>
+      <Parallax className="container" ref={parallaxRef} pages={5} horizontal>
+        <Page offset={0} gradient="pink" onClick={() => scroll(1)} />
+        <Page offset={1} gradient="teal" onClick={() => scroll(2)} />
+        <Page offset={2} gradient="tomato" onClick={() => scroll(3)} />
+        <Page offset={3} gradient="pink" onClick={() => scroll(4)} />
+        <Page offset={4} gradient="teal" />
+      </Parallax>
+
       <Box
         sx={{
           display: 'flex',
@@ -246,7 +282,8 @@ const SurveryPage = () => {
               <Typography
                 variant="h2"
                 sx={{
-                  marginBottom: 2
+                  marginBottom: 2,
+                  zIndex: 999
                 }}
               >
                 3. Location

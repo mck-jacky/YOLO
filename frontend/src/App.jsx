@@ -5,6 +5,7 @@ import LoginPage from "./routes/LoginPage";
 import SurveryPage from './routes/SurveyPage';
 import ResultPage from './routes/ResultPage';
 import LandingPage from './routes/LandingPage';
+import CardPage from './routes/CardPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/survey" element={<SurveryPage />} />
         <Route path='/result' element={<ResultPage />} />
+        <Route path='/test' element={<CardPage />} />
         <Route path='/' element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
