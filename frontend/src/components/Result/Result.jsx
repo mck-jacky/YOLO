@@ -4,10 +4,14 @@ import Typography from '@mui/material/Typography';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Button from '@mui/material/Button';
 
-const Result = ({ title, yolo, duration, image, onRemove }) => {
+const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
   const handleRemove = () => {
     onRemove(); // Call the provided onRemove function to remove the component
   };
+
+  const handleOnClick = () => {
+    onClick();
+  }
 
   return (
     <Box
@@ -17,6 +21,7 @@ const Result = ({ title, yolo, duration, image, onRemove }) => {
         alignItems: 'center',
         marginBottom: 2
         }}
+      onClick={handleOnClick}
     >
 
       <Box
