@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Button from '@mui/material/Button';
 
-const Result = ({ title, time, location, nOfTickets, image, onRemove }) => {
+const Result = ({ title, yolo, duration, image, onRemove }) => {
   const handleRemove = () => {
     onRemove(); // Call the provided onRemove function to remove the component
   };
@@ -74,7 +74,7 @@ const Result = ({ title, time, location, nOfTickets, image, onRemove }) => {
               fontWeight: 700,
             }}
           >
-            {time}
+            {yolo}
           </Typography>
           <Typography 
             sx={{
@@ -82,15 +82,7 @@ const Result = ({ title, time, location, nOfTickets, image, onRemove }) => {
               fontWeight: 700,
             }}
           >
-            {location}
-          </Typography>
-          <Typography 
-            sx={{
-              fontSize: 16,
-              fontWeight: 700,
-            }}
-          >
-            Number of tickets: {nOfTickets}
+            {duration}
           </Typography>
         </Box>
             

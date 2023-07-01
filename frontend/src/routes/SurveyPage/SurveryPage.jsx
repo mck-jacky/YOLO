@@ -17,6 +17,7 @@ import StepLabel from '@mui/material/StepLabel';
 import IParallax from '@react-spring/parallax'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { TextField, Button, Chip, Container } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const steps = ['POIS', 'Type', 'Location', 'YOLO Level', 'Keywords'];
 
@@ -43,9 +44,17 @@ const SurveryPage = () => {
     setAge(event.target.value);
   };
 
+  const navigate = useNavigate();
+
   const handleNextButton = (event) => {
     setStep(step+1)
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
+    console.log(step)
+
+    if (step === 5) {
+      navigate('/result')
+    }
   }
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -261,7 +270,7 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
-                4. Level of tolerance
+                4. Level of YOLO
               </Typography>
 
               <Box

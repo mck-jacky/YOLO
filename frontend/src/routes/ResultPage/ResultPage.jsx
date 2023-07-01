@@ -2,15 +2,17 @@ import React from 'react'
 import { Box, Container } from '@mui/system';
 import Result from '../../components/Result';
 import Map from '../../components/Map';
-import { Typography } from '@mui/material';
 import './index.css'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import IternaryItem from '../../components/IternaryItem'; 
+import { Typography, Button } from '@mui/material';
+
 
 const ResultPage = () => {
   const [events, setEvents] = React.useState([
     // Initial events data
-    { id: 1, title: 'Event 1', time: '10:00 AM', location: 'Location 1', nOfTickets: 5, image: "https://s1.ticketm.net/tm/en-au/dam/a/c7a/e92e76cc-05f5-49ba-a4ec-9f09d5822c7a_EVENT_DETAIL_PAGE_16_9.jpg"},
-    { id: 2, title: 'Event 2', time: '2:00 PM', location: 'Location 2', nOfTickets: 10, image: "https://s1.ticketm.net/tm/en-au/dam/a/c7a/e92e76cc-05f5-49ba-a4ec-9f09d5822c7a_EVENT_DETAIL_PAGE_16_9.jpg"},
+    { id: 1, title: 'Event 1', yolo: '4', duration: '6 hours', image: "https://s1.ticketm.net/tm/en-au/dam/a/c7a/e92e76cc-05f5-49ba-a4ec-9f09d5822c7a_EVENT_DETAIL_PAGE_16_9.jpg"},
+    { id: 2, title: 'Event 2', yolo: '5', duration: '6 hours', image: "https://s1.ticketm.net/tm/en-au/dam/a/c7a/e92e76cc-05f5-49ba-a4ec-9f09d5822c7a_EVENT_DETAIL_PAGE_16_9.jpg"},
     // Add more events as needed
   ]);
 
@@ -30,6 +32,10 @@ const ResultPage = () => {
       setEvents((prevEvents) => prevEvents.filter((event) => event.id !== eventId));
     }, 500); // Delay removal of the event to allow animation to complete (adjust timing as needed)
   };
+
+  const handleBackButton = () => {
+    setStep(1)
+  }
 
   return (
     <Box
@@ -62,12 +68,15 @@ const ResultPage = () => {
         </Typography>
 
         {step > 1 && (
-          <ArrowBackIosIcon
+          <Button onClick={handleBackButton}
             sx={{
               alignSelf: "self-start",
               marginLeft: 5
             }}
-          />
+          >
+            <ArrowBackIosIcon/>
+          </Button>
+
         )}
 
         {step === 1 && (
@@ -79,9 +88,8 @@ const ResultPage = () => {
               >
                 <Result
                   title={event.title}
-                  time={event.time}
-                  location={event.location}
-                  nOfTickets={event.nOfTickets}
+                  yolo={event.yolo}
+                  duration={event.duration}
                   image={event.image}
                   onRemove={() => handleRemove(event.id)}
                 />
@@ -92,130 +100,47 @@ const ResultPage = () => {
         )}
 
         {step === 2 && (
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: 'flex-start',
-              height: "100vh",
-              // backgroundColor: "red"
-            }}
-          >
+          <>
             <Typography 
               variant="h2"
               sx={{
-                fontSize: 32,
-                fontWeight: 800,
+                fontSize: 28,
+                fontWeight: 700,
                 marginBottom: 4
               }}
             >
               Adventure day
             </Typography>
 
-            <Box
+           <Box
               sx={{
                 display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-                marginBottom: 4
+                flexDirection: "column",
+                alignItems: 'center',
+                height: "100vh",
+                width: "60%",
               }}
             >
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                Place 1
-              </Typography>
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                YOLO Lv.4
-              </Typography>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-                marginBottom: 4
-              }}
-            >
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                Place 1
-              </Typography>
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                YOLO Lv.4
-              </Typography>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-                marginBottom: 4
-              }}
-            >
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                Place 1
-              </Typography>
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                YOLO Lv.4
-              </Typography>
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
-                marginBottom: 4
-              }}
-            >
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                Place 1
-              </Typography>
-              <Typography 
-                variant="h2"
-                sx={{
-                  fontSize: 25,
-                }}
-              >
-                YOLO Lv.4
-              </Typography>
-            </Box>
+            <IternaryItem
+              location="location 1"
+              desc="slkjahfk asljkfhdskj "
+              yolo="4"  
+              type="scen"
+            />
+             <IternaryItem
+              location="location 1"
+              desc="slkjahfk asljkfhdskj "
+              yolo="4"  
+              type="scen"
+            />
+             <IternaryItem
+              location="location 1"
+              desc="slkjahfk asljkfhdskj "
+              yolo="4"  
+              type="food"
+            />
           </Box>
+          </>
         )}
         
         

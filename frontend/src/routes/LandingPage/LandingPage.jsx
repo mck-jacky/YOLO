@@ -65,8 +65,6 @@ const LandingPage = () => {
           muted
           loop
           sx={{
-            width: '45%',
-            height: '300px',
             objectFit: 'cover',
           }}
         >
