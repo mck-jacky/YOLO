@@ -69,7 +69,7 @@ const LandingPage = () => {
               marginBottom: 4
             }}
           >
-            Y.O.L.O. is an innovative travel solution that personalizes itineraries based on your appetite for risk. Utilizing Google Maps' global points of interest, each assigned with a risk rating (Y.O.L.O. rating), the solution caters to those that want to escape the confines of post-lockdown.
+            YOLO is an innovative travel solution that personalizes itineraries based on your appetite for risk. Utilizing Google Maps' global points of interest, each assigned with a risk rating (YOLO rating), the solution caters to those that want to escape the confines of post-lockdown.
           </Typography>
 
           <Link to="/survey">

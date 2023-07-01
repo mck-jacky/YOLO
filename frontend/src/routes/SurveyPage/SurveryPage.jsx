@@ -27,7 +27,6 @@ import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 // Page component
 export const Page = ({ offset, gradient, onClick }) => (
   <>
-   {/* onClick={onClick} */}
     <ParallaxLayer offset={offset} speed={0.2}>
       <div className="slopeBegin" />
     </ParallaxLayer>
@@ -35,10 +34,6 @@ export const Page = ({ offset, gradient, onClick }) => (
     <ParallaxLayer offset={offset} speed={0.6}>
       <div className={`slopeEnd ${gradient}`} />
     </ParallaxLayer>
-
-    {/* <ParallaxLayer className="text number" offset={offset} speed={0.3}>
-      <span>0{offset + 1}</span>
-    </ParallaxLayer> */}
   </>
 )
 
