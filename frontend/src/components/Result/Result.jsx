@@ -21,7 +21,6 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
         alignItems: 'center',
         marginBottom: 2
         }}
-      onClick={handleOnClick}
     >
 
       <Box
@@ -50,7 +49,11 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
 
         <Box
           component="img"
-          sx={{}}
+          sx={{
+            width: "166px",
+            height: "115px",
+            objectFit: 'contain'
+          }}
           alt='event-image'
           src={image}
         />
@@ -69,7 +72,9 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
             sx={{
               fontSize: 16,
               fontWeight: 800,
+              cursor: "pointer"
             }}
+            onClick={handleOnClick}
           >
             {title}
           </Typography>

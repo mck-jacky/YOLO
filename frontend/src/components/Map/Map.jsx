@@ -143,6 +143,13 @@ const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
 
       // start the animation
       animateDashArray(0);
+      
+      setTimeout(() => {
+        map.flyTo({
+          center: [151.1839, -33.8861],
+          zoom: 11.28
+        });;
+      }, 150);
     });
 
     map.on('move', () => {
