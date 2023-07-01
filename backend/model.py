@@ -37,7 +37,7 @@ input_value = 10
 output = perform_complex_calculation(input_value)
 print(output)
 
-def generate_fibonacci_sequence(n):
+def generate_sequence(n):
     fibonacci = [0, 1]
     for i in range(2, n):
         fibonacci.append(fibonacci[i-1] + fibonacci[i-2])
