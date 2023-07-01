@@ -146,9 +146,9 @@ const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
       
       setTimeout(() => {
         map.flyTo({
-          center: [151.1839, -33.8861],
-          zoom: 11.28
-        });;
+          center: [151.0126, -33.8550],
+          zoom: 9.09
+        });
       }, 150);
     });
 
@@ -203,9 +203,6 @@ const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
 
   return (
     <div>
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
       <div ref={mapContainerRef} className='map-container' />
     </div>
   );
