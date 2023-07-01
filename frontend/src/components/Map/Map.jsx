@@ -8,20 +8,21 @@ mapboxgl.accessToken =
 
 const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
   const mapContainerRef = useRef(null);
-  const [map, setMap] = useState(null);
   const [lng, setLng] = useState(in_lng);
   const [lat, setLat] = useState(in_lat);
   const [zoom, setZoom] = useState(in_zoom);
   const [pinpoints, setPinpoints] = useState(in_pinpoints);
+  const [map, setMap] = useState(null);
 
   // Initialize map when component mounts
   useEffect(() => {
-    const map = new mapboxgl.Map({
+    let map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/light-v11',
       center: [lat, lng],
       zoom: zoom
     });
+    setMap(map);
     
     const geojson = {
       'type': 'FeatureCollection',
@@ -56,7 +57,7 @@ const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
             type: "geojson",
             data: {
               type: "FeatureCollection",
-              features: pinpoints,
+              features: in_pinpoints,
             },
           });
 
@@ -155,6 +156,43 @@ const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
       // map.remove();
     }
   }, []);
+
+  useEffect(() => {    
+    const geojson = {
+      'type': 'FeatureCollection',
+      'features': [
+        {
+          'type': 'Feature',
+          'properties': {},
+          'geometry': {
+            'coordinates': in_geopath,
+            'type': 'LineString'
+          }
+        }
+      ]
+    };
+
+    if (map) {
+      const sourceObject = map.getSource('line');
+      if (sourceObject) {
+        sourceObject.setData(geojson);
+      }
+      
+      map.flyTo({
+        center: [in_lat, in_lng],
+        zoom: in_zoom
+      });
+
+      const pointObject = map.getSource('points');
+      if (pointObject) {
+        pointObject.setData({
+          type: "FeatureCollection",
+          features: in_pinpoints
+        });
+      }
+
+    }
+  }, [in_lng, in_lat, in_zoom, in_geopath, in_pinpoints]);
 
   return (
     <div>
