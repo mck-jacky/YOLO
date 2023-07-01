@@ -82,6 +82,7 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
             sx={{
               fontSize: 16,
               fontWeight: 700,
+              color: "#ffd700"
             }}
           >
             {yolo}

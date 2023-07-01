@@ -63,6 +63,8 @@ const IternaryItem = ({location, desc, yolo, type}) => {
           variant="h2"
           sx={{
             fontSize: 25,
+            color: "#ffd700",
+            fontWeight: 700
           }}
         >
           {yolo}

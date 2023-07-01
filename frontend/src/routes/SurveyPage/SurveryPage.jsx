@@ -19,6 +19,7 @@ import { TextField, Button, Chip, Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax'
 import './style.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // Page component
 export const Page = ({ offset, gradient, onClick }) => (
@@ -38,7 +39,7 @@ export const Page = ({ offset, gradient, onClick }) => (
   </>
 )
 
-const steps = ['POIS', 'Type', 'Location', 'YOLO Level', 'Keywords'];
+const steps = ['POIs', 'Category', 'Location', 'YOLO Level', 'Keywords'];
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -53,6 +54,17 @@ const StyledRating = styled(Rating)({
 
 const CustomStyledRating = styled(StyledRating)({
   fontSize: '48px', // Adjust the font size as per your requirement
+});
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ffd700', // Replace with your desired primary color
+    },
+    secondary: {
+      main: '#00FF00', // Replace with your desired secondary color
+    },
+  },
 });
 
 const SurveryPage = () => {
@@ -141,7 +153,7 @@ const SurveryPage = () => {
 
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <Parallax className="container" ref={parallaxRef} pages={5} horizontal>
         <Page offset={0} gradient="pink" onClick={() => scroll(1)} />
         <Page offset={1} gradient="teal" onClick={() => scroll(2)} />
@@ -200,7 +212,7 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
-                1. How many POIS
+                1. How many POIs
               </Typography>
 
               <Box
@@ -236,7 +248,7 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
-                2. Result type
+                2. Category
               </Typography>
 
               <Box
@@ -246,28 +258,44 @@ const SurveryPage = () => {
                 }}
               >
                 <Button
-                  sx={{ marginRight: 3 }}
+                   sx={{ 
+                    marginRight: 3, 
+                    color: 'grey',
+                    border: '1px solid grey'
+                  }}
                   variant={food ? 'outlined' : 'contained'}
                   onClick={handleFood}
                 >
                   Food
                 </Button>
                 <Button
-                  sx={{ marginRight: 3 }}
+                  sx={{ 
+                    marginRight: 3, 
+                    color: 'grey',
+                    border: '1px solid grey'
+                  }}
                   variant={scenery ? 'outlined' : 'contained'}
                   onClick={handleScenery}
                 >
                   Scenery
                 </Button>
                 <Button
-                  sx={{ marginRight: 3 }}
+                   sx={{ 
+                    marginRight: 3, 
+                    color: 'grey',
+                    border: '1px solid grey'
+                  }}
                   variant={shopping ? 'outlined' : 'contained'}
                   onClick={handleShopping}
                 >
-                  Shopping
+                  Activity
                 </Button>
                 <Button
-                  sx={{ marginRight: 3 }}
+                   sx={{ 
+                    marginRight: 3, 
+                    color: 'grey',
+                    border: '1px solid grey'
+                  }}
                   variant={random ? 'outlined' : 'contained'}
                   onClick={handleRandom}
                 >
@@ -390,7 +418,7 @@ const SurveryPage = () => {
        
 
       </Box>
-    </React.Fragment>
+    </ThemeProvider>
   )
 }
 

@@ -56,7 +56,8 @@ const LandingPage = () => {
               fontSize: 37,
               fontWeight: 800,
               width: 500,
-              marginBottom: 4
+              marginBottom: 4,
+              color: "#ffd700"
             }}
           >
             Introducing YOLO
@@ -72,7 +73,18 @@ const LandingPage = () => {
           </Typography>
 
           <Link to="/survey">
-            <Button variant="outlined">YOLO</Button>
+            <Button 
+              sx={{
+                backgroundColor: '#ffd700',
+                color: 'black',
+                '&:hover': {
+                  backgroundColor: '#ffe74c', // Adjust the hover color to a brighter shade of yellow
+                }
+              }}
+              variant="contained"
+            >
+              YOLO
+            </Button>
           </Link>
 
           {loggedin === false && (
@@ -84,15 +96,27 @@ const LandingPage = () => {
             >
               <Button 
                 sx={{
-                  marginRight: 1
+                  marginRight: 1,
+                  backgroundColor: '#ffd700',
+                  color: 'black',
+                  '&:hover': {
+                    backgroundColor: '#ffe74c', // Adjust the hover color to a brighter shade of yellow
+                  }
                 }}
-                variant="outlined"
+                variant="contained"
                 onClick={handleLogin}
               >
                 <ArrowOutwardIcon/>Login
               </Button>
-              <Button 
-                variant="outlined"
+              <Button
+                sx={{
+                  backgroundColor: '#ffd700',
+                  color: 'black',
+                  '&:hover': {
+                    backgroundColor: '#ffe74c', // Adjust the hover color to a brighter shade of yellow
+                  }
+                }} 
+                variant="contained"
               >
                 <ArrowOutwardIcon/>Register
               </Button>
@@ -109,12 +133,17 @@ const LandingPage = () => {
             >
               <Button 
                 sx={{
-                  marginRight: 1
+                  marginRight: 1,
+                  backgroundColor: '#ffd700',
+                  color: 'black',
+                  '&:hover': {
+                    backgroundColor: '#ffe74c', // Adjust the hover color to a brighter shade of yellow
+                  }
                 }}
-                variant="outlined"
+                variant="contained"
                 onClick={handleLogin}
-              >
-                <ArrowOutwardIcon/>Logout
+              >Logout
+                <ArrowOutwardIcon/>
               </Button>
             </Box>
 
@@ -137,7 +166,7 @@ const LandingPage = () => {
             <MDBCardBody className='p-5'>
 
               <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                <h3 className="ls-tight" style={{color: "#99c5c4"}}>
+                <h3 className="ls-tight" style={{color: "#ffd700"}}>
                   YOLO
                 </h3>
               </Link>
@@ -150,7 +179,7 @@ const LandingPage = () => {
                 <MDBInput wrapperClass='mb-4' label='Email' id='email' name="email" type='email' />
                 <MDBInput wrapperClass='mb-4' label='Password' id='password' name="password" type='password' />
 
-                <MDBBtn style={{backgroundColor: "#99c5c4"}} className='w-100 mb-4' size='md' onClick={handleLogin}>sign in</MDBBtn>
+                <MDBBtn style={{backgroundColor: "#ffd700", color: 'black'}} className='w-100 mb-4' size='md' onClick={handleLogin}>sign in</MDBBtn>
               </Box>
 
               <Box
