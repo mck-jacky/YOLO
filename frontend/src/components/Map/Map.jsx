@@ -151,7 +151,9 @@ const Map = ({in_lng, in_lat, in_zoom, in_geopath, in_pinpoints}) => {
     });
 
     // Clean up on unmount
-    return () => map.remove();
+    return () => {
+      // map.remove();
+    }
   }, []);
 
   return (
