@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import { Box, Container } from '@mui/system';
 import Typography from '@mui/material/Typography';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import Button from '@mui/material/Button';
 
-const Result = ({ title, time, location, nOfTickets, image }) => {
+const Result = ({ title, time, location, nOfTickets, image, onRemove }) => {
+  const handleRemove = () => {
+    onRemove(); // Call the provided onRemove function to remove the component
+  };
+
   return (
     <Box
       sx={{
@@ -51,6 +57,7 @@ const Result = ({ title, time, location, nOfTickets, image }) => {
             marginLeft: 2,
             justifyContent: 'center',
             color: 'white',
+            width: 600
           }}
         >
           <Typography 
@@ -85,6 +92,36 @@ const Result = ({ title, time, location, nOfTickets, image }) => {
           >
             Number of tickets: {nOfTickets}
           </Typography>
+        </Box>
+            
+        <Box 
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+            <Button
+              onClick={handleRemove}
+              title="Cancel"
+              sx={{
+                '&:hover': {
+                  '& .hover-text': {
+                    display: 'block',
+                  },
+                },
+              }}
+            >
+              <CancelOutlinedIcon
+                sx={{
+                  fontSize: 25,
+                  color: 'white',
+                }}
+              />
+              <span className="hover-text" style={{ display: 'none' }}>
+                Cancel
+              </span>
+            </Button>
         </Box>
           
       </Box>
