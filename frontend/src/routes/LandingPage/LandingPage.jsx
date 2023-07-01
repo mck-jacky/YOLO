@@ -100,8 +100,25 @@ const LandingPage = () => {
 
           )}
 
-          
+          {loggedin === true && (
+            <Box
+              sx={{
+                display: 'flex',
+                marginTop: 3
+              }}
+            >
+              <Button 
+                sx={{
+                  marginRight: 1
+                }}
+                variant="outlined"
+                onClick={handleLogin}
+              >
+                <ArrowOutwardIcon/>Logout
+              </Button>
+            </Box>
 
+          )}
           
 
         </Box>
