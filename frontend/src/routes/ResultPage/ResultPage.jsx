@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Container } from '@mui/system';
 import Result from '../../components/Result';
+import Map from '../../components/Map';
 import { Typography } from '@mui/material';
 import './index.css'
 
@@ -82,9 +83,8 @@ const ResultPage = () => {
           backgroundColor: 'blue'
         }}
       >
-        dsfklmsd
+        <Map />
       </Box>
-
     </Box>
   )
 }
