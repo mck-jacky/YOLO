@@ -3,6 +3,7 @@ import { Box, Container } from '@mui/system';
 import { Typography } from '@mui/material';
 import video from '../../images/video.mp4';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -50,7 +51,9 @@ const LandingPage = () => {
             We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.
           </Typography>
 
-          <Button variant="outlined">YOLO</Button>
+          <Link to="/survey">
+            <Button variant="outlined">YOLO</Button>
+          </Link>
           
 
         </Box>

@@ -4,9 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
-import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -17,8 +15,10 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import IParallax from '@react-spring/parallax'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { TextField, Button, Chip, Container } from '@mui/material';
 
-const steps = ['1', '2', '3', '4'];
+const steps = ['POIS', 'Type', 'Location', 'YOLO Level', 'Keywords'];
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -49,15 +49,6 @@ const SurveryPage = () => {
   }
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
   const [food, setFood] = React.useState(true);
   const [scenery, setScenery] = React.useState(true);
   const [shopping, setShopping] = React.useState(true);
@@ -84,6 +75,33 @@ const SurveryPage = () => {
     setShopping(true)
     setRandom(!random)
   }
+
+  const [keywords, setKeywords] = React.useState(["hiking", "IGA", "Chicken Wrap"]);
+  const [inputValue, setInputValue] = React.useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleAddKeyword = () => {
+    if (inputValue.trim() !== '') {
+      setKeywords([...keywords, inputValue]);
+      setInputValue('');
+    }
+  };
+
+  const handleDeleteKeyword = (index) => {
+    const updatedKeywords = [...keywords];
+    updatedKeywords.splice(index, 1);
+    setKeywords(updatedKeywords);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleAddKeyword();
+    }
+  };
+
 
   return (
     <React.Fragment>
@@ -260,6 +278,57 @@ const SurveryPage = () => {
                   icon={<EscalatorOutlinedIcon fontSize="inherit" />}
                   emptyIcon={<EscalatorIcon fontSize="inherit" />}
                 />
+              </Box>
+            </>
+          )}
+
+          {step === 5 && (
+            <>
+              <Typography
+                variant="h2"
+                sx={{
+                  marginBottom: 2
+                }}
+              >
+                5. Keywords
+              </Typography>
+
+              <Box
+                sx={{
+                  marginBottom: 10
+                }}
+              >
+                  <Box
+                    sx={{
+                      display: 'flex'
+                    }}
+                  >
+                    <TextField 
+                      label="Enter a keyword"
+                      value={inputValue}
+                      variant="standard" 
+                      fullWidth
+                      onChange={handleInputChange}
+                      onKeyPress={handleKeyPress}
+                    />
+                    <Button variant="text" onClick={handleAddKeyword}>
+                      <KeyboardArrowRightIcon/>
+                    </Button>
+                  </Box>
+
+                  <div style={{ marginTop: '1rem' }}>
+                    {keywords.map((keyword, index) => (
+                      <Chip
+                        key={index}
+                        label={keyword}
+                        onDelete={() => handleDeleteKeyword(index)}
+                        style={{ marginRight: '0.5rem' }}
+                      />
+                    ))}
+                  </div>
+              
+                
+
               </Box>
             </>
           )}
