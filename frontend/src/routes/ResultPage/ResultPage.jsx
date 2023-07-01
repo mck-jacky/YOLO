@@ -123,14 +123,13 @@ const ResultPage = () => {
         <Typography 
           variant="h2"
           sx={{
-            fontSize: 32,
+            fontSize: 28,
             fontWeight: 800,
             width: 500,
             marginBottom: 4,
-            marginLeft: 8
           }}
         >
-          Result
+          Your Own Llama Odyssey Result
         </Typography>
 
         {step > 1 && (

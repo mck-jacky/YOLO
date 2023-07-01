@@ -20,6 +20,9 @@ import { useNavigate } from 'react-router-dom';
 import { Parallax, ParallaxLayer, IParallax } from '@react-spring/parallax'
 import './style.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
+import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 
 // Page component
 export const Page = ({ offset, gradient, onClick }) => (
@@ -43,11 +46,11 @@ const steps = ['POIs', 'Category', 'Location', 'YOLO Level', 'Keywords'];
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
-    color: '#ff6d75',
+    color: '#ffd700',
     fontSize: '48px'
   },
   '& .MuiRating-iconHover': {
-    color: '#ff3d47',
+    color: '#ffd700',
     fontSize: '48px'
   },
 });
@@ -212,6 +215,12 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
+                <ArrowBackIosOutlinedIcon
+                  sx={{
+                    marginRight: 3,
+                    fontSize: 40
+                  }}
+                />
                 1. How many POIs
               </Typography>
 
@@ -221,12 +230,12 @@ const SurveryPage = () => {
                 }}
               >
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">POIS</InputLabel>
+                  <InputLabel id="demo-simple-select-label">POIs</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={age}
-                    label="POIS"
+                    label="POIs"
                     onChange={handleChange}
                   >
                     <MenuItem value={1}>1</MenuItem>
@@ -248,6 +257,12 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
+                <ArrowBackIosOutlinedIcon
+                  sx={{
+                    marginRight: 3,
+                    fontSize: 40
+                  }}
+                />
                 2. Category
               </Typography>
 
@@ -314,6 +329,12 @@ const SurveryPage = () => {
                   zIndex: 999
                 }}
               >
+                <ArrowBackIosOutlinedIcon
+                  sx={{
+                    marginRight: 3,
+                    fontSize: 40
+                  }}
+                />
                 3. Location
               </Typography>
 
@@ -335,6 +356,12 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
+                <ArrowBackIosOutlinedIcon
+                  sx={{
+                    marginRight: 3,
+                    fontSize: 40
+                  }}
+                />
                 4. Level of YOLO
               </Typography>
 
@@ -349,8 +376,8 @@ const SurveryPage = () => {
                   defaultValue={0}
                   getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                   precision={1}
-                  icon={<EscalatorOutlinedIcon fontSize="inherit" />}
-                  emptyIcon={<EscalatorIcon fontSize="inherit" />}
+                  icon={<LocalFireDepartmentIcon fontSize="inherit" />}
+                  emptyIcon={<LocalFireDepartmentOutlinedIcon fontSize="inherit" />}
                 />
               </Box>
             </>
@@ -364,6 +391,12 @@ const SurveryPage = () => {
                   marginBottom: 2
                 }}
               >
+                <ArrowBackIosOutlinedIcon
+                  sx={{
+                    marginRight: 3,
+                    fontSize: 40
+                  }}
+                />
                 5. Keywords
               </Typography>
 

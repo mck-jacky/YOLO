@@ -85,7 +85,7 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
               color: "#ffd700"
             }}
           >
-            {yolo}
+            YOLO Lv.{yolo}
           </Typography>
           <Typography 
             sx={{
@@ -93,7 +93,7 @@ const Result = ({ title, yolo, duration, image, onRemove, onClick }) => {
               fontWeight: 700,
             }}
           >
-            {duration}
+            Duration: {duration}
           </Typography>
         </Box>
             
